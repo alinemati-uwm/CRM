@@ -68,7 +68,7 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt && rm -rf /tmp/*
 
 # Step: Create static directories (collectstatic will be run at container startup)
 RUN mkdir -p /app/static \
-    && mkdir -p /app/explore_news/static
+    && mkdir -p /app/crm/static
 
 # Step: Expose port
 EXPOSE 8000
@@ -76,5 +76,5 @@ EXPOSE 8000
 
 # Step: Start the application
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-# CMD ["gunicorn", "explore_news.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]
+# CMD ["gunicorn", "crm.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]
 

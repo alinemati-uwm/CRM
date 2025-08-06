@@ -11,7 +11,7 @@ services:
     volumes:
       - ../../:/app
       - ../../static:/app/static
-      - ../../explore_news/media:/app/explore_news/media
+      - ../../media:/app/crm/media
     env_file:
       - ../../.env
     ports:

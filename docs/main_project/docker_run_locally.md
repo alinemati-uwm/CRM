@@ -23,6 +23,12 @@ for .env will build the project with development environment variables:
 docker compose --env-file .env -f docker/development/docker-compose.yml up --build -d
 ```
 
+add no-cache to build without cache:
+
+```bash
+docker compose --env-file .env -f docker/development/docker-compose.yml build --no-cache
+```
+
 ## add user to project:
 
 .env with run makemigrations:
@@ -43,7 +49,7 @@ How to create a superuser admin in docker:
 .env with run createsuperuser:
 
 ```bash
-docker compose --env-file .env -f docker/development/docker-compose.yml run --rm explore_news_web sh -c "python manage.py createsuperuser"
+docker compose --env-file .env -f docker/development/docker-compose.yml run --rm crm_web sh -c "python manage.py createsuperuser"
 ```
 
 How to log into the project:
@@ -51,7 +57,7 @@ How to log into the project:
 .env with run logs:
 
 ```bash
-docker compose  --env-file .env -f docker/development/docker-compose.yml logs -f explore_news_web
+docker compose  --env-file .env -f docker/development/docker-compose.yml logs -f crm_web
 ```
 
 shell to run commands in the project:
@@ -59,7 +65,7 @@ shell to run commands in the project:
 .env with run shell:
 
 ```bash
-docker compose --env-file .env -f docker/development/docker-compose.yml run --rm explore_news_web sh -c "python manage.py shell"
+docker compose --env-file .env -f docker/development/docker-compose.yml run --rm crm_web sh -c "python manage.py shell"
 ```
 
 collectstatic the project:
@@ -67,7 +73,7 @@ collectstatic the project:
 .env with run collectstatic:
 
 ```bash
-docker compose --env-file .env -f docker/development/docker-compose.yml run --rm explore_news_web sh -c "python manage.py collectstatic"
+docker compose --env-file .env -f docker/development/docker-compose.yml run --rm crm_web sh -c "python manage.py collectstatic"
 ```
 
 Check the project for any issues:
@@ -75,7 +81,7 @@ Check the project for any issues:
 .env with run check:
 
 ```bash
-docker compose --env-file .env -f docker/development/docker-compose.yml run --rm explore_news_web sh -c "python manage.py check"
+docker compose --env-file .env -f docker/development/docker-compose.yml run --rm crm_web sh -c "python manage.py check"
 ```
 
 ###############################################
@@ -89,16 +95,16 @@ Run the tests in the project:
 .env with run test:
 
 ```bash
-docker compose --env-file .env -f docker/development/docker-compose.yml run --rm explore_news_web sh -c "python manage.py test"
+docker compose --env-file .env -f docker/development/docker-compose.yml run --rm crm_web sh -c "python manage.py test"
 
-docker compose --env-file .env -f docker/development/docker-compose.yml run --rm explore_news_web sh -c "sleep 5 && python manage.py test"
+docker compose --env-file .env -f docker/development/docker-compose.yml run --rm crm_web sh -c "sleep 5 && python manage.py test"
 
-docker compose --env-file .env -f docker/development/docker-compose.yml run --rm explore_news_web  sh -c "pytest --reuse-db --tb=short -v tests/integration_test"
+docker compose --env-file .env -f docker/development/docker-compose.yml run --rm crm_web  sh -c "pytest --reuse-db --tb=short -v tests/integration_test"
 
 ```
 
-docker compose --env-file .env.local -f docker/development/docker-compose.yml run --rm explore_news_web sh -c "sleep 5 && python manage.py test"
-docker compose --env-file .env.local -f docker/development/docker-compose.yml run --rm explore_news_web sh -c "pytest --reuse-db --tb=short -v tests/integration_test"
+docker compose --env-file .env.local -f docker/development/docker-compose.yml run --rm crm_web sh -c "sleep 5 && python manage.py test"
+docker compose --env-file .env.local -f docker/development/docker-compose.yml run --rm crm_web sh -c "pytest --reuse-db --tb=short -v tests/integration_test"
 
 ###############################################
 
@@ -110,5 +116,5 @@ Run server
 .env with run server:
 
 ```bash
-docker compose -f docker/development/docker-compose.yml run --rm explore_news_web sh -c "python manage.py runserver 0.0.0.0:8000"
+docker compose -f docker/development/docker-compose.yml run --rm crm_web sh -c "python manage.py runserver 0.0.0.0:8000"
 ```

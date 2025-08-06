@@ -33,7 +33,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "crm",
+    "django_smart_ratelimit"
 ]
+
+
+RATELIMIT_BACKEND = "database"  # Use database for rate limiting
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
