@@ -28,14 +28,14 @@ docker compose --env-file .env -f docker/development/docker-compose.yml up --bui
 .env with run makemigrations:
 
 ```bash
-docker compose --env-file .env -f docker/development/docker-compose.yml run --rm explore_news_web sh -c "python manage.py makemigrations"
+docker compose --env-file .env -f docker/development/docker-compose.yml run --rm crm_web sh -c "python manage.py makemigrations"
 ```
 
 here .env with run migrate:
 
 ```bash
 # .env
-docker compose --env-file .env -f docker/development/docker-compose.yml run --rm explore_news_web sh -c "python manage.py migrate"
+docker compose --env-file .env -f docker/development/docker-compose.yml run --rm crm_web sh -c "python manage.py migrate"
 ```
 
 How to create a superuser admin in docker:

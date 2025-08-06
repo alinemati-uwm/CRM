@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import os
 import environ
 env = environ.Env()
 environ.Env.read_env(".env")
@@ -16,7 +16,12 @@ DEBUG = env("DEBUG", default=True)
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["*"])
 
-CSRF_TRUSTED_ORIGINS = [""]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://localhost:9090",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:9090"
+]
 
 # Application definition
 
@@ -64,31 +69,31 @@ WSGI_APPLICATION = "edenthought.wsgi.application"
 
 # Default SQLite Database
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Production database (PostgreSQL)
-'''
-DB_NAME = env("DB_NAME", default=None)
 
-if DB_NAME:
 
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": env("DB_NAME", default=''),
-            "USER": env("DB_USER", default=''),
-            "PASSWORD": env("DB_PASSWORD", default=''),
-            "HOST": env("DB_HOST", default=''),
-            "PORT": env("DB_PORT", default=''),
-        }
+
+
+# source : https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('POSTGRES_DB_NAME' , 'crm_db'),
+        'USER': os.environ.get('POSTGRES_USER' , 'crm_user'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD' , 'password123'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'crm_db'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
-'''
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
