@@ -116,13 +116,15 @@ yarn-debug.log*
 yarn-error.log*
 
 # --- Ignore all requirements lock files (uncomment if you want to ignore) ---
-# Pipfile.lock
-# poetry.lock
-# poetry.toml
-# pdm.lock
-# pdm.toml
-# uv.lock
-# pixi.lock
+Pipfile.lock
+poetry.lock
+poetry.toml
+pdm.lock
+pdm.toml
+uv.lock
+pixi.lock
 
 # --- Ignore any other unimportant files here ---
 # Add more patterns as needed
+
+.env
