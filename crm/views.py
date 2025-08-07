@@ -4,13 +4,16 @@ from django.shortcuts import render, redirect
 from .models import DailyNote
 
 from .forms import DailyNoteForm
+import requests
 
-from django_ratelimit.decorators import ratelimit
-@ratelimit(key='ip', rate='10/m', block=True)
-def my_view(request):
-    return render(request, 'crm/templates/index.html')
+from django_smart_ratelimit import rate_limit
+from django.http import JsonResponse
 
+from django_smart_ratelimit import rate_limit
 
+@rate_limit(key='ip', rate='10/m')
+def public_api(request):
+    return JsonResponse({'message': 'Hello World'})
 
 
 def home(request):

@@ -64,10 +64,10 @@ services:
       retries: 10
     networks:
       - crm-network
-  
+
 networks:
   crm-network:
     driver: bridge
-  
+
 volumes:
   postgres_data:

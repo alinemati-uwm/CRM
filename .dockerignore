@@ -10,3 +10,6 @@ secrets.tfvars
 
 *.tfstate
 *.tfstate.*
+
+venv
+./venv/*

@@ -39,10 +39,13 @@ docker compose --env-file .env -f docker/development/docker-compose.yml run --rm
 
 here .env with run migrate:
 
+docker compose --env-file .env -f docker/development/docker-compose.yml run --rm crm_web sh -c "python manage.py migrate"
 ```bash
-# .env
 docker compose --env-file .env -f docker/development/docker-compose.yml run --rm crm_web sh -c "python manage.py migrate"
 ```
+
+
+
 
 How to create a superuser admin in docker:
 

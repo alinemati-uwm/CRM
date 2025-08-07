@@ -84,18 +84,18 @@ WSGI_APPLICATION = "edenthought.wsgi.application"
 # Production database (PostgreSQL)
 
 
-
-
 # source : https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB_NAME' , 'crm_db'),
-        'USER': os.environ.get('POSTGRES_USER' , 'crm_user'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD' , 'password123'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'crm_db'),
-        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
+        'NAME': os.getenv('POSTGRES_DB_NAME', default='crm_db'),
+        'USER': os.getenv('POSTGRES_USER', default='crm_user'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='Hdlh2hev3O8hXqgm18N6'),
+        'HOST': os.getenv('DB_HOST', default='crm_db_dev'),
+        'PORT': os.getenv('DB_PORT', default='5432'),
     }
 }
 
